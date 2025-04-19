@@ -9,6 +9,7 @@ from picamera2 import Picamera2
 from datetime import datetime
 from flask import Flask, Response, render_template_string
 from RPLCD.i2c import CharLCD
+import geocoder  # For getting location
 
 # ========================
 # Configuration
@@ -25,14 +26,15 @@ os.makedirs(IMAGE_DIR, exist_ok=True)
 # ========================
 # System State
 # ========================
-app = Flask(_name_)
+app = Flask(__name__)
 picam2 = None
 current_occupancy = 0
-current_capacity = 40
+current_capacity = 1
 last_update = "Not yet updated"
 system_status = "Initializing"
 camera_ready = False
 api_available = False
+location_info = "NA/NA"  # Location will be updated later
 
 # ========================
 # Initialize Hardware
@@ -150,7 +152,7 @@ def generate_frames():
 
             # Add information overlay
             overlay = np.zeros((100, frame.shape[1], 3), dtype=np.uint8)
-            cv2.rectangle(overlay, (0,0), (frame.shape[1], 100), (0,0,0), -1)
+            cv2.rectangle(overlay, (0, 0), (frame.shape[1], 100), (0, 0, 0), -1)
 
             # Add text to overlay
             info_text = f"Occupancy: {current_occupancy}/{current_capacity}"
@@ -158,11 +160,11 @@ def generate_frames():
             camera_text = f"Camera: {CAMERA_ID}"
 
             cv2.putText(frame, info_text, (10, 30),
-                       cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
             cv2.putText(frame, status_text, (10, 60),
-                       cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
             cv2.putText(frame, camera_text, (10, 90),
-                       cv2.FONT_HERSHEY_SIMPLEX, 0.4, (200, 200, 200), 1)
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.4, (200, 200, 200), 1)
 
             # Encode frame
             ret, buffer = cv2.imencode('.jpg', frame)
@@ -330,104 +332,36 @@ def dashboard():
                 </div>
 
                 <div class="status-item">
-                    <span class="status-label">API Status</span>
-                    <span class="status-value">{{ "Connected" if api_available else "Disconnected" }}</span>
-                </div>
-
-                <div class="buttons">
-                    <button onclick="location.reload()">Refresh</button>
-                    <button onclick="window.open('/video_feed', '_blank')">Fullscreen Video</button>
+                    <span class="status-label">Location</span>
+                    <span class="status-value">{{ location_info }}</span>
                 </div>
             </div>
         </div>
-
-        <script>
-            // Auto-refresh every 15 seconds
-            setTimeout(function() {
-                location.reload();
-            }, 15000);
-        </script>
     </body>
     </html>
-    ''',
-    camera_id=CAMERA_ID,
-    occupancy=current_occupancy,
-    capacity=current_capacity,
-    status=system_status,
-    status_class=status_class,
-    last_update=last_update,
-    api_available=api_available,
-    current_time=current_time)
+    ''', current_time=current_time, camera_id=CAMERA_ID,
+         occupancy=current_occupancy, capacity=current_capacity,
+         status=system_status, last_update=last_update, 
+         location_info=location_info, status_class=status_class)
 
-# ========================
-# System Monitoring
-# ========================
-def monitor_system():
-    global api_available
+def get_ip_location():
+    global location_info
+    g = geocoder.ip('me')
+    if g.ok:
+        location_info = f"{g.city}, {g.country}"
+    else:
+        location_info = "Unable to fetch location"
 
+def periodic_updates():
     while True:
-        try:
-            # Check API availability with HEAD request
-            try:
-                response = requests.head(API_URL, timeout=5)
-                api_available = response.status_code < 400
-                status = "Connected" if api_available else "Disconnected"
-                print(f"[SYSTEM] API Status: {status} (HTTP {response.status_code})")
-            except Exception as e:
-                api_available = False
-                print(f"[!] API check failed: {e}")
+        capture_and_process_image()
+        get_ip_location()
+        time.sleep(CAPTURE_INTERVAL)
 
-            # Check disk space
-            stat = os.statvfs(IMAGE_DIR)
-            free_gb = (stat.f_bavail * stat.f_frsize) / (1024**3)
-            print(f"[SYSTEM] Disk Space: {free_gb:.2f}GB free")
-
-            # Check camera status
-            print(f"[SYSTEM] Camera Status: {'Ready' if camera_ready else 'Not ready'}")
-
-        except Exception as e:
-            print(f"[!] System monitor error: {e}")
-
-        time.sleep(30)
-
-# ========================
-# Main Execution
-# ========================
-def main():
-    global picam2
-
+if __name__ == "__main__":
     try:
-        # Initialize hardware
         picam2 = initialize_camera()
-        if lcd:
-            update_lcd()
-
-        # Start system monitor thread
-        threading.Thread(target=monitor_system, daemon=True).start()
-
-        # Start periodic capture thread
-        def capture_loop():
-            while True:
-                capture_and_process_image()
-                time.sleep(CAPTURE_INTERVAL)
-
-        threading.Thread(target=capture_loop, daemon=True).start()
-
-        # Start web interface
-        print(f"[+] Starting web interface on port {STREAM_PORT}")
-        app.run(host='0.0.0.0', port=STREAM_PORT, threaded=True)
-
-    except KeyboardInterrupt:
-        print("\n[+] Shutting down...")
+        threading.Thread(target=periodic_updates, daemon=True).start()
+        app.run(host="0.0.0.0", port=STREAM_PORT, debug=False)
     except Exception as e:
-        print(f"[!] Fatal error: {e}")
-    finally:
-        if picam2:
-            picam2.close()
-        if lcd:
-            lcd.clear()
-            lcd.close()
-        print("[+] System shutdown complete")
-
-if _name_ == "_main_":
-    main()
+        print(f"[!] System startup failed: {e}")
