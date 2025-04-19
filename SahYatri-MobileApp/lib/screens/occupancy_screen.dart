@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import '../models/bus_occupancy.dart';
 import '../services/api_service.dart';
@@ -17,15 +18,28 @@ class _OccupancyScreenState extends State<OccupancyScreen> {
   List<BusOccupancy> _busData = [];
   bool _showAll = false;
   bool _loading = true;
+  Timer? _refreshTimer;
 
   @override
   void initState() {
     super.initState();
     _fetchBusData();
+    _startAutoRefresh();
+  }
+
+  void _startAutoRefresh() {
+    _refreshTimer = Timer.periodic(Duration(seconds: 5), (_) {
+      _fetchBusData();
+    });
+  }
+
+  @override
+  void dispose() {
+    _refreshTimer?.cancel(); // cancel the timer when widget is disposed
+    super.dispose();
   }
 
   Future<void> _fetchBusData() async {
-    setState(() => _loading = true);
     try {
       final data = await ApiService.fetchOccupancyData();
       data.sort((a, b) => b.timestamp.compareTo(a.timestamp));
