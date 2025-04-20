@@ -34,6 +34,18 @@ SahYatri comprises multiple modular components, each in its dedicated repository
 
 ---
 
+## 🔧 List of Components Used
+
+- Raspberry Pi 4  
+- Raspberry Pi Camera 3 Wide  
+- MPU6050 (Gyroscope + Accelerometer)  
+- GPS Module  
+- 16x2 LCD Display  
+- I2C Module  
+- Cooling Fan  
+
+---
+
 ## 🛠 Technical Implementation
 
 ### Edge Computing Unit
