@@ -10,7 +10,7 @@ SahYatri comprises multiple modular components, each in its dedicated repository
 
 | Component | Description |
 |-----------|-------------|
-| [SahYatri-3DModel]((https://github.com/yasharth-0910/SahYatri/tree/main/SahYatri-3DModel)) | Ergonomic enclosure design for edge computing unit |
+| [SahYatri-3DModel](https://github.com/yasharth-0910/SahYatri/tree/main/SahYatri-3DModel) | Ergonomic enclosure design for edge computing unit |
 | [SahYatri-Hardware](https://github.com/yasharth-0910/tree/main/SahYatri-Hardware) | Embedded system implementation for data acquisition |
 | [SahYatri-DetectionAI](https://github.com/yasharth-0910/tree/main/SahYatri-DetectionAI) | Computer vision pipeline for passenger flow analysis |
 | [SahYatri-BusApi](https://github.com/yasharth-0910/tree/main/SahYatri-BusApi) | Distributed systems backend for data aggregation |
