@@ -98,10 +98,9 @@ This system contributes to several United Nations Sustainable Development Goals:
 
 ![Circuit Image](circuit.jpg)
 
-
 ## 👥 Team Members
 
-- *Yasharth Singh*  
-- *Rakshit Suneja*  
-- *Shivam Kashyap*  
-- *Aman Verma*
+- *[Yasharth Singh](https://github.com/yasharth-0910)* – [LinkedIn](https://www.linkedin.com/in/yasharth-singh-b2493b284/)  
+- *[Rakshit Suneja](https://github.com/rakshit-21)*  
+- *[Shivam Kashyap](https://github.com/Atom0204)*  
+- *[Aman Verma](https://github.com/AmanVerma1067)*
