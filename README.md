@@ -100,6 +100,6 @@ This system contributes to several United Nations Sustainable Development Goals:
 ## 👥 Team Members
 
 - **Yasharth Singh** – [GitHub](https://github.com/yasharth-0910) – [LinkedIn](https://www.linkedin.com/in/yasharth-singh-b2493b284/)
-- **Rakshit Suneja** – [GitHub](https://github.com/rakshit-21)
-- **Shivam Kashyap** – [GitHub](https://github.com/Atom0204)
-- **Aman Verma** – [GitHub](https://github.com/AmanVerma1067)
+- **Rakshit Suneja** – [GitHub](https://github.com/rakshit-21) – [LinkedIn](https://www.linkedin.com/in/rakshit-suneja-03894b329)
+- **Shivam Kashyap** – [GitHub](https://github.com/Atom0204) – [LinkedIn](http://linkedin.com/in/shivam-kashyap-1899222b9)
+- **Aman Verma** – [GitHub](https://github.com/AmanVerma1067) – [LinkedIn](https://in.linkedin.com/in/amanverma1067)
