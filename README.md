@@ -51,8 +51,6 @@ SahYatri comprises multiple modular components, each in its dedicated repository
 ### Data Infrastructure
 - Node.js/Express RESTful API
 - PostgreSQL time-series database
-- Redis caching layer
-- Websocket-based real-time updates
 
 ### Visualization Interfaces
 - React-based operational dashboard
@@ -87,14 +85,6 @@ This system contributes to several United Nations Sustainable Development Goals:
 ## Project Images/Videos
 
 ![Circuit Image](circuit.jpg)
-
-
-<iframe
-  src="https://drive.google.com/file/d/1CA7hU7Jj5VWJO3zomwiltJMd8vUKTXDK/preview"
-  width="100%"
-  height="480"
-  allow="autoplay"
-></iframe>
 
 
 ## 👥 Team Members
