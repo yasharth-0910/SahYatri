@@ -1,6 +1,6 @@
 # Real-Time Bus Occupancy Dashboard
 
-A real-time web dashboard that displays bus occupancy data from multiple cameras, built with Next.js 15 and Tailwind CSS.
+A real-time web dashboard that displays real time bus occupancy data recieved from Bus installed on, and render new occupancy data  with delay of less than a second
 
 ## Features
 
@@ -36,20 +36,6 @@ The dashboard uses the following API endpoints:
 - `GET /api/occupancy` - Get all occupancy records
 - `GET /api/occupancy/:camera_id` - Get records for a specific camera
 
-## Development
-
-To start the development server:
-
-```bash
-npm run dev
-```
-
-For production build:
-
-```bash
-npm run build
-npm start
-```
 
 ## License
 
