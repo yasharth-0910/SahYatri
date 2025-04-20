@@ -15,31 +15,6 @@ A real-time web dashboard that displays bus occupancy data from multiple cameras
 - Node.js 18.17 or later
 - npm (comes with Node.js)
 
-## Setup
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd bus-dashboard
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create a `.env.local` file in the root directory with:
-```env
-NEXT_PUBLIC_BUS_API_URL=https://bus-api-ihcu.onrender.com/api/occupancy
-```
-
-4. Run the development server:
-```bash
-npm run dev
-```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
 ## Project Structure
 
 ```
