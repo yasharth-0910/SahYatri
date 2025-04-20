@@ -1,6 +1,6 @@
 # SahYatri – Intelligent Public Transport Analytics Platform 🚍📡
 
-**SahYatri** is an IoT-enabled transportation informatics system designed to optimize mass transit operations through real-time passenger density analytics. This comprehensive solution integrates embedded edge computing, computer vision, and full-stack web/mobile interfaces to provide actionable insights for transit authorities and commuters.
+SahYatri is an IoT-enabled transportation informatics system designed to optimize mass transit operations through real-time passenger density analytics. This comprehensive solution integrates embedded edge computing, computer vision, and full-stack web/mobile interfaces to provide actionable insights for transit authorities and commuters.
 
 ---
 
@@ -10,23 +10,23 @@ SahYatri comprises multiple modular components, each in its dedicated repository
 
 | Component | Description |
 |-----------|-------------|
-| [`SahYatri-3DModel`](https://github.com/yasharth-0910/SahYatri-3DModel) | Ergonomic enclosure design for edge computing unit |
-| [`SahYatri-Hardware`](https://github.com/yasharth-0910/SahYatri-Hardware) | Embedded system implementation for data acquisition |
-| [`SahYatri-DetectionAI`](https://github.com/yasharth-0910/SahYatri-DetectionAI) | Computer vision pipeline for passenger flow analysis |
-| [`SahYatri-BusApi`](https://github.com/yasharth-0910/SahYatri-BusApi) | Distributed systems backend for data aggregation |
-| [`SahYatri-Website`](https://github.com/yasharth-0910/SahYatri-Website) | Operational intelligence dashboard |
-| [`SahYatri-MobileApp`](https://github.com/yasharth-0910/SahYatri-MobileApp) | Passenger-facing mobility application |
+| [SahYatri-3DModel](https://github.com/yasharth-0910/tree/main/SahYatri-3DModel) | Ergonomic enclosure design for edge computing unit |
+| [SahYatri-Hardware](https://github.com/yasharth-0910/tree/main/SahYatri-Hardware) | Embedded system implementation for data acquisition |
+| [SahYatri-DetectionAI](https://github.com/yasharth-0910/tree/main/SahYatri-DetectionAI) | Computer vision pipeline for passenger flow analysis |
+| [SahYatri-BusApi](https://github.com/yasharth-0910/tree/main/SahYatri-BusApi) | Distributed systems backend for data aggregation |
+| [SahYatri-Website](https://github.com/yasharth-0910/tree/main/SahYatri-Website) | Operational intelligence dashboard |
+| [SahYatri-MobileApp](https://github.com/yasharth-0910/tree/main/SahYatri-MobileApp) | Passenger-facing mobility application |
 
 ---
 
-## 🏗️ System Architecture
+## 🏗 System Architecture
 
-1. **Edge Node** captures visual data streams
-2. **Vision Processing Unit** analyzes spatial distribution
-3. **Analytics Engine** computes:
+1. Edge Node captures visual data streams  
+2. Vision Processing Unit analyzes spatial distribution  
+3. Analytics Engine computes:
    - Current capacity utilization
    - Historical load patterns
-   - Predictive crowding forecasts
+   - Predictive crowding forecasts  
 4. Data is:
    - Visualized locally via HMI interface
    - Transmitted to cloud-based data warehouse
@@ -34,7 +34,7 @@ SahYatri comprises multiple modular components, each in its dedicated repository
 
 ---
 
-## 🛠️ Technical Implementation
+## 🛠 Technical Implementation
 
 ### Edge Computing Unit
 - Raspberry Pi 4 with custom 3D-printed enclosure
@@ -44,14 +44,15 @@ SahYatri comprises multiple modular components, each in its dedicated repository
 
 ### Computer Vision System
 - Optimized YOLOv5n convolutional neural network
-- Real-time object detection at 12 MP
+- Real-time object detection at 15 FPS
 - Dynamic density calculation algorithms
 - Adaptive thresholding for varying lighting conditions
 
 ### Data Infrastructure
 - Node.js/Express RESTful API
 - PostgreSQL time-series database
-- real-time updates
+- Redis caching layer
+- Websocket-based real-time updates
 
 ### Visualization Interfaces
 - React-based operational dashboard
@@ -65,16 +66,40 @@ SahYatri comprises multiple modular components, each in its dedicated repository
 
 This system contributes to several United Nations Sustainable Development Goals:
 
-🎯 **SDG 9** - Industry, Innovation and Infrastructure  
+🎯 SDG 9 - Industry, Innovation and Infrastructure  
 🔹 Implementing smart infrastructure solutions  
 🔹 Promoting technological innovation in public transit  
 
-🎯 **SDG 11** - Sustainable Cities and Communities  
+🎯 SDG 11 - Sustainable Cities and Communities  
 🔹 Enhancing urban mobility efficiency  
 🔹 Reducing transit-related energy consumption  
 
-🎯 **SDG 17** - Partnerships for the Goals  
+🎯 SDG 17 - Partnerships for the Goals  
 🔹 Facilitating public-private collaborations  
 🔹 Creating open-source mobility solutions  
 
 ---
+
+## 🧩 System Design
+
+![System Design Flowchart](flowchart.jpeg)
+
+## Project Images/Videos
+
+![Circuit Image](circuit.jpg)
+
+
+<iframe
+  src="https://drive.google.com/file/d/1CA7hU7Jj5VWJO3zomwiltJMd8vUKTXDK/preview"
+  width="100%"
+  height="480"
+  allow="autoplay"
+></iframe>
+
+
+## 👥 Team Members
+
+- *Yasharth Singh*  
+- *Rakshit Suneja*  
+- *Shivam Kashyap*  
+- *Aman Verma*
