@@ -10,12 +10,12 @@ SahYatri comprises multiple modular components, each in its dedicated repository
 
 | Component | Description |
 |-----------|-------------|
-| [SahYatri-3DModel](https://github.com/yasharth-0910/SahYatri-3DModel) | Ergonomic enclosure design for edge computing unit |
-| [SahYatri-Hardware](https://github.com/yasharth-0910/SahYatri-Hardware) | Embedded system implementation for data acquisition |
-| [SahYatri-DetectionAI](https://github.com/yasharth-0910/SahYatri-DetectionAI) | Computer vision pipeline for passenger flow analysis |
-| [SahYatri-BusApi](https://github.com/yasharth-0910/SahYatri-BusApi) | Distributed systems backend for data aggregation |
-| [SahYatri-Website](https://github.com/yasharth-0910/SahYatri-Website) | Operational intelligence dashboard |
-| [SahYatri-MobileApp](https://github.com/yasharth-0910/SahYatri-MobileApp) | Passenger-facing mobility application |
+| [SahYatri-3DModel](https://github.com/yasharth-0910/tree/main/SahYatri-3DModel) | Ergonomic enclosure design for edge computing unit |
+| [SahYatri-Hardware](https://github.com/yasharth-0910/tree/main/SahYatri-Hardware) | Embedded system implementation for data acquisition |
+| [SahYatri-DetectionAI](https://github.com/yasharth-0910/tree/main/SahYatri-DetectionAI) | Computer vision pipeline for passenger flow analysis |
+| [SahYatri-BusApi](https://github.com/yasharth-0910/tree/main/SahYatri-BusApi) | Distributed systems backend for data aggregation |
+| [SahYatri-Website](https://github.com/yasharth-0910/tree/main/SahYatri-Website) | Operational intelligence dashboard |
+| [SahYatri-MobileApp](https://github.com/yasharth-0910/tree/main/SahYatri-MobileApp) | Passenger-facing mobility application |
 
 ---
 
@@ -83,3 +83,11 @@ This system contributes to several United Nations Sustainable Development Goals:
 ## 🧩 System Design
 
 ![System Design Flowchart](flowchart.jpeg)
+
+
+## 👥 Team Members
+
+- **Yasharth Singh**  
+- **Rakshit Suneja**  
+- **Shivam Kashyap**  
+- **Aman Verma**
